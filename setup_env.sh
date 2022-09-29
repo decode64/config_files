@@ -1,10 +1,11 @@
 #!/bin/bash
 
-sudo apt update
-sudo apt upgrade -y
-sudo apt install -y \
+export NEEDRESTART_SUSPEND=1
+
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get install -y \
     git \
-    gcc \
     build-essential \
     openssl \
     libssl-dev \
@@ -19,8 +20,8 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt update
-sudo apt install -y docker-ce docker-ce-cli
+sudo apt-get update
+sudo apt-get install -y docker-ce docker-ce-cli
 sudo usermod -aG docker ${USER}
 
 # Download configuration

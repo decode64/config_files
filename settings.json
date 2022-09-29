@@ -1,0 +1,19 @@
+{
+  "workbench.activityBar.visible": true,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "editor.rulers": [80,100,120],
+  "editor.renderWhitespace": "all",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.minimap.enabled": false,
+  "workbench.editor.enablePreview": false,
+  "git.ignoreMissingGitWarning": true,
+  "editor.quickSuggestions": false,
+  "editor.parameterHints.enabled": false,
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.quickSuggestionsDelay": 5,
+  "editor.hover.enabled": false
+}

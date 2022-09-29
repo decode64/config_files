@@ -1,0 +1,13 @@
+[user]
+  name = Adriano Luz
+[alias]
+  co = checkout
+  b = branch
+  c = commit
+  s = status
+  d = diff
+  ds = diff --staged
+  a = add
+  l = log
+[core]
+  editor = vim

@@ -1,10 +1,10 @@
 #!/bin/bash
 
-export NEEDRESTART_SUSPEND=1
+echo "\$nrconf{restart} = 'l';" | sudo tee -a /etc/needrestart/needrestart.conf
 
-sudo apt-get update
-sudo apt-get upgrade -y
-sudo apt-get install -y \
+sudo apt update
+sudo apt upgrade -y
+sudo apt install -y \
     git \
     build-essential \
     openssl \
@@ -20,8 +20,8 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get update
-sudo apt-get install -y docker-ce docker-ce-cli
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli
 sudo usermod -aG docker ${USER}
 
 # Download configuration
@@ -31,8 +31,8 @@ curl -fsSL https://raw.githubusercontent.com/decode64/config_files/main/.gitconf
 # Install asdf
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
 
-# Reload bash
-exec bash
+# Reload bash config
+source $HOME/.bashrc
 
 # Install ruby
 asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git

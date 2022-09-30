@@ -31,8 +31,8 @@ curl -fsSL https://raw.githubusercontent.com/decode64/config_files/main/.gitconf
 # Install asdf
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
 
-# Reload bash config
-source $HOME/.bashrc
+# Load asdf
+. $HOME/.asdf/asdf.sh
 
 # Install ruby
 asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git

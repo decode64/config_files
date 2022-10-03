@@ -2,13 +2,28 @@
 
 sudo apt install -y nginx
 
+# Create self signed certificate
+sudo mkdir /etc/ssl/private
+sudo chmod 700 /etc/ssl/private
+sudo openssl req -x509 -nodes -days 1825 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
+sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
+
+
+# Create basic auth credentials
+sudo sh -c "echo -n '$USER:' >> /etc/nginx/.htpasswd"
+sudo sh -c "openssl passwd -apr1 >> /etc/nginx/.htpasswd"
+
 (
 cat << EOF
 server {
-  listen 80 default_server;
-  listen [::]:80 default_server;
+  listen 443 ssl;
+  listen [::]:443 ssl;
 
   server_name vscode;
+
+  ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
+  ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
+  ssl_dhparam /etc/ssl/certs/dhparam.pem;
 
   location / {
     proxy_pass http://localhost:8000/;
@@ -16,6 +31,9 @@ server {
     proxy_http_version 1.1;
     proxy_set_header Upgrade \$http_upgrade;
     proxy_set_header Connection "upgrade";
+
+    auth_basic "";
+    auth_basic_user_file /etc/nginx/.htpasswd;
   }
 }
 EOF

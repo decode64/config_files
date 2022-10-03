@@ -19,4 +19,7 @@ server {
   }
 }
 EOF
-) | sudo tee -a /etc/nginx/sites-available/vscode
+) | sudo tee -a /etc/nginx/sites-enabled/vscode
+
+sudo rm /etc/nginx/sites-enabled/default
+sudo service nginx restart

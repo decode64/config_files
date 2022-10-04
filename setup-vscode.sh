@@ -14,5 +14,10 @@ Restart=always
 RestartSec=1
 User=$USER
 ExecStart=/usr/local/bin/code-server serve-local "--without-connection-token"
+
+[Install]
+WantedBy=multi-user.target
 EOF
 ) | sudo tee -a /etc/systemd/system/vscode-server.service
+
+sudo systemctl enable vscode-server

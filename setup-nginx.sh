@@ -11,7 +11,9 @@ sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 
 # Create basic auth credentials
 sudo sh -c "echo -n '$USER:' >> /etc/nginx/.htpasswd"
-sudo sh -c "openssl passwd -apr1 >> /etc/nginx/.htpasswd"
+echo "Basic auth password:"
+read passwd
+sudo sh -c "openssl passwd -apr1 ${passwd} >> /etc/nginx/.htpasswd"
 
 (
 cat << EOF

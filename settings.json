@@ -15,5 +15,6 @@
   "editor.parameterHints.enabled": false,
   "editor.acceptSuggestionOnEnter": "off",
   "editor.quickSuggestionsDelay": 5,
-  "editor.hover.enabled": false
+  "editor.hover.enabled": false,
+  "terminal.integrated.allowChords": false
 }

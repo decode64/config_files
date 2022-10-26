@@ -42,3 +42,6 @@ MAKE_OPTS="-j `cat /proc/cpuinfo | grep processor | wc -l`" RUBY_CONFIGURE_OPTS=
 # Install node
 asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 asdf install nodejs latest
+
+asdf global ruby latest
+asdf global nodejs latest
